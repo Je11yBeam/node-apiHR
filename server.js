@@ -53,18 +53,18 @@ app.post("/getrate", function (req, res) {
 
 app.get("/getrate_chart", function (req, res) {
   connection.query(
-    `SELECT *
+    `SELECT id,heartrate,time
      FROM hrTest`,
     function (err, results) {
-      const time = [];
-      const heartrate = [];
+      const times = [];
+      const heartrates = [];
       for (let i = 0; i < results.length; i++) {
-        time.push(results[i]["Time"]);
-        heartrate.push(parseFloat(results[i]["Heartrate"]));
+        times.push(results[i]["Time"]);
+        heartrates.push(parseFloat(results[i]["Heartrate"]));
       }
       res.json({
-        time,
-        heartrate,
+        times,
+        heartrates,
       });
     }
   );
