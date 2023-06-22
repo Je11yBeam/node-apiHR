@@ -51,23 +51,24 @@ app.post("/getrate", function (req, res) {
   );
 });
 
-app.get('/getrate_chart', function(req, res){
+app.get("/getrate_chart", function (req, res) {
   connection.query(
     `SELECT *
      FROM hrTest`,
-     function(err, results) {
-      const time = []
-      const heartrate = []
+    function (err, results) {
+      const time = [];
+      const heartrate = [];
       for (let i = 0; i < results.length; i++) {
-        time.push(results[i]['Time'])
-        heartrate.push(parseFloat(results[i]['Heartrate']))
+        time.push(results[i]["Time"]);
+        heartrate.push(parseFloat(results[i]["Heartrate"]));
       }
       res.json({
-        time, heartrate
-      })
-     }
-  )
-
+        time,
+        heartrate,
+      });
+    }
+  );
+});
 
 // app.get("/pets_price", function (req, res) {
 //   connection.query(
