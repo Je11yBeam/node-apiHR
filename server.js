@@ -22,7 +22,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/getrate", function (req, res) {
-  connection.query("SELECT * FROM heartrate", function (err, results) {
+  connection.query("SELECT * FROM hrTest", function (err, results) {
     console.log(results); //แสดงผลที่ console
     res.json(results); //ตอบกลับ request
   });
@@ -40,7 +40,7 @@ app.get("/getrate", function (req, res) {
 app.post("/getrate", function (req, res) {
   const h_data = req.body.h_data;
   connection.query(
-    `INSERT INTO heartrate (h_data) VALUES (?)`,
+    `INSERT INTO hrTest (heartrate) VALUES (?)`,
     [h_data],
     function (err, results) {
       if (err) {
